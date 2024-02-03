@@ -1,5 +1,4 @@
 const express = require("express");
-const serverless = require('serverless-http');
 const app = express();
 const server = require("http").Server(app);
 const { v4: uuidv4 } = require("uuid");
@@ -36,11 +35,5 @@ io.on("connection", (socket) => {
     });
   });
 });
-
-app.get('/', (req, res) => {
-  res.render('index'); // Render EJS template
-});
-
-module.exports.handler = serverless(app);
 
 server.listen(process.env.PORT || 3030);
